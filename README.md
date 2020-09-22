@@ -29,7 +29,7 @@ heart eyes face:  <i class="far fa-grin-hearts"></i>
  
 
  {what the actual file should say/include}
- ## Description
+ ## Fantasy Pet Tomagotchi 
 
  ## Instructions
 

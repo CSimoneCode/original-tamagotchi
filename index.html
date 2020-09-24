@@ -5,32 +5,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
     <link rel="stylesheet" href="./css/main.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
     <script defer src="./js/app.js"></script>
     <title>Digital Fantasy Pet</title>
 </head>
 <body>
-    <h1>Take care of your baby tomagotchi!</h1> 
-    <section id="desc-actions">
+    <header>
+        <h1>Raise a dragon of your own!</h1> 
+        <div id="gameStart">Ready to play? 
+            <button id="startButton">Start</button>
+        </div>
+    </header>
+    <section id="descActions">
         <p> <!-- description and explanation of how to play --></p>
-        <div>
-            <ul id="types-list">
-                <li>Sphinx</li>
-                <li>Cerberus</li>
-                <li>Unicorn</li>
-                <li>Dragon</li>
-            </ul>
+        <div id="actionButtons">
+            <button id="hungerButton">Feed Pet</button>
+            <button id="sleepButton">Light Off</button>
+            <button id="playButton">Play With Pet</button>
         </div>
-        <div id="game-start">Ready to play? 
-            <button id="start-button">Start</button>
-        </div>
-        <div id="action-buttons">
-            <button id="hunger-button">Feed Pet</button>
-            <button id="sleep-button">Light Off</button>
-            <button id="play-button">Play With Pet</button>
-        </div>
+        <!--Add another <div> for music if I decide to go that route after MVP is done-->
+    </section>
+    <section id="statsDisplay">
+        <ul id="statLevels">
+            <li id="hungry">Hunger: 0</li>
+            <li id="sleepy">Sleepiness: 0</li>
+            <li id="bored">Boredom: 0</li>
+            <li id="age">Age: 0</li>
+            <li id="timer">Time: 0s</li>
+        </ul>
     </section>
     <section id="pet">
-        <i class="fas fa-dragon"></i>
+        <img id="dragonMed" href="">
         <!--This is where to put all of the actual structure of the tomagotchi && Stats display-->
     </section>
 </body>

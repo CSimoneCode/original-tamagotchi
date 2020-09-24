@@ -8,4 +8,8 @@ body {
     align-items: center;
 } 
 /* Style buttons, tomagotchi, animations, backgrounds, paragraphs, fonts, use flexbox?*/
+#statLevels {
+    display: inline-block;
+    justify-content: space-between;
+}
   

@@ -1,39 +1,15 @@
-***Brainstorm:
 
-**data - 
-objects, classes, booleans (hungry, tired, dead), user input 
+### Project Zero 
+This project is a browser game featuring a Tomagotchi pet that needs to eat, sleep, play, and morphs or evolves at specific intervals. 
 
-**presentation - 
-best ways to present? No idea yet... 
-
-**views - 
-not sure what this even means...
-
-**style - 
-font awesome cdn: <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
-
-egg:   <i class="fas fa-egg"></i>
-square:  <i class="far fa-square"></i>
-minus square:  <i class="far fa-minus-square"></i>
-check square:  <i class="fas fa-check-square"></i>
-cat:  <i class="fas fa-cat"></i>
-dragon:  <i class="fas fa-dragon"></i>
-dog:  <i class="fas fa-dog"></i>
-hippo:  <i class="fas fa-hippo"></i>
-spider:  <i class="fas fa-spider"></i>
-full heart:  <i class="fas fa-heart"></i>
-empty heart:  <i class="far fa-heart"></i>
-heart eyes face:  <i class="far fa-grin-hearts"></i>
-
-**dom manipulation -  
- 
-
- {what the actual file should say/include}
- ## Fantasy Pet Tomagotchi 
+ ## User Stories/game logi
+    - The game begins when the user clicks start. At that time the timers begin for countdowns on each of the attributes as well as for the age of the pet. A "hatch" animation gets the user started and prompts them to name their pet. 
+    - Every 15 seconds, the hunger/sleepiness/boredom counters increment by 1. The user can click the "Play", "Lights out", or "Feed" buttons to initiate any of those actions and decrease the total on those attributes by 1. The attribute buttons can each only be clicked once every 10 seconds.
+    - At 5 minutes the pet morphs/evolves into it's second stage/form and at 10 minutes it evolves into its final stage/form
+    - If at any point the hunger/sleepiness/boredom counter reaches 10, the pet dies. The game can be restarted with a new pet at that point. 
+    - If the user keeps the pet alive and healthy for 15 minutes, they win!
 
  ## Instructions
-
- ### Contributing
 
  ## License
   

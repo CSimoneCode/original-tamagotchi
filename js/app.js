@@ -1,128 +1,169 @@
-console.log("hello") 
-//universal vars/funcs
-const initialAge = 0;
-const initialHunger = 0;
-const initialSleepy = 0;
-const initialBoredom = 0;
-const $feedPet = $('#hunger-button')
-const $lightOff = $('#sleep-button')
-const $playPet = $('#play-button')
 
-//game class
-class Game {
-    constructor(){
-//var for objects
-    //pet(s)
-    this.pet = getPetName();
-    }
-//methods for objects 
-    //user prompts
-    getPetName() {
-        name = prompt(`What will you call ${this.pet}`)
-        return name; 
-    };
-    //buttons (feed, sleep, play) // <<<<<Look into a way to turn the button off for 10s after each click
-    $('#hunger-button').on('click', function feedPet(){
-        //happy animation
-        this.hunger--;
-        return `${this.pet} has been fed and had their hunger reduced by one!`
-    });
-    $('#sleep-button').on('click', function petSleep(){
-        //happy animation
-        this.sleepy--;
-        return `${this.pet} has taken a nap and had their sleepiness reduced by one!`
-    });
-    $('#play-button').on('click', function playWithPet(){
-        //happy animation
-        this.boredom--;
-        return `${this.pet} had fun playing and had their boredom reduced by one!`
-    });
-        //click reduces hunger/tired/happy var by 1
-    //start game
-    $('#start-button').on('click', function startNewGame(){
-        //time starts for age and attribute intervals
-    howHungry();
-    howSleepy();
-    howBored();
-    howOld();
-    //hatch/wakeup animation
-    });
-    //parameters for win/lose (Want an alert for game over)
+// - The game begins when the user clicks start. At that time the timers begin for countdowns on each of the attributes as well as for the age of the pet. A "hatch" animation gets the user started and prompts them to name their pet. 
+// - Every 15 seconds, the hunger/sleepiness/boredom counters increment by 1. The user can click the "Play", "Lights out", or "Feed" buttons to initiate any of those actions and decrease the total on those attributes by 1. The attribute buttons can each only be clicked once every 10 seconds.
+// - At 5 minutes the pet morphs/evolves into it's second stage/form and at 10 minutes it evolves into its final stage/form
+// - If at any point the hunger/sleepiness/boredom counter reaches 10, the pet dies. The game can be restarted with a new pet at that point. 
+// - If the user keeps the pet alive and healthy for 15 minutes, they win!
+// -------Necessary Elements ----------------
+//Buttons: start, input, play, feed, lightsout
+//classes: game, pet 
+//methods: gamestart, prompt for name, eat, play, sleep, age, timer, evolve, isDead gameover(win/lose)
 
+
+
+//global vars/funcs
+let initialAge = 0;
+let initialHunger = 0;
+let initialSleepy = 0;
+let initialBoredom = 0;
+let initialTime =0;
+
+function gameTimer(){
+timer = setInterval(function(){
+        initialTime++;
+        $('#timer').text(`timer: ${initialTime}s`)
+}, 1000)
 }
-
-
 //pet class   
 class Pet {
-    constructor(name = "your pet", type = "dragon"){
+    constructor(name = "your pet") {
 //var for objects/attributes
     //name (user input)
     this.name = name; 
-    //type (give list of options)
-    this.type = type; 
     //age 
-    this.age = howOld();
+    this.age = initialAge;
     //hunger 
-    this.hunger = howHungry();
+    this.hunger = initialHunger;
     //tiredness 
-    this.sleepy = howSleepy();
+    this.sleepy = initialSleepy;
     //boredom
-    this.bored = howBored();
+    this.bored = initialBoredom;
     }
-    //methods
-    howHungry(){
-        if (hungry < 10){
-        const hungry = setInterval(function(){
-            initialHunger++
-        }, 15000);
-        return hungry; 
-        }else{
-            return `Sad day! ${this.name} has died!`
+//methods    
+    evolvePet() {
+        //evolution animation? evolve every 5 minutes, age ++ every minute
+        //Could I make and array of pet attributes and details and move to the next array item eith each evolution? Do research...
+        if (age ===5) {
+            alert('morph1')
+            //sub trapinch picture for the vibrava picture
+        }if (age ===10) {
+            alert('morph2')
+            //sub vibrava picture for the flygon picture
         }
-    }
-    //sleep - tired 
-    howSleepy(){
-        if (sleepy < 10){
-        const sleepy = setInterval(function(){
-            initialSleepy++
-        }, 15000) //increment +1 every 15 seconds
-        return sleepy; 
-        }else {
-            return `Sad day! ${this.name} has died!`
-        }
-    }
-    //play - bored 
-    howBored() {
-        if (boredom < 10){
-        const boredom = setInterval(function(){
-            initialBoredom++
-        },15000)
-        return boredom;
-        }else{
-            return `Sad day! ${this.name} has died!`
-        }
-    }
-    //age - start at 0
-    howOld(){
-        if (this.isDead() == false){
-            const age = setInterval(function(){
-                initialAge++
-            }, 30000)
-            return age;
-        }else{
-            break;
-        }
-    }
-    //heath check/isDead
-    isDead(){
-        if (this.hunger==10 || this.tired==10 || this.bored ==10){
-            return true;
-        }else{
-            return false;
-        }
+    
     }
 }
 
-//instance of pet
-    //var - myPet
-    
+
+
+
+
+
+//})//time starts for age and attribute intervals
+    //hatch/wakeup animation
+    $('#startButton').click(function(){
+    gameTimer();
+    const newPet = new Pet(getPetName());
+    howBored()
+    howHungry()
+    howOld()
+    howSleepy()
+    newPet.evolvePet()
+    console.log(newPet.age)
+    console.log(newPet.bored)
+    console.log(newPet.hunger)
+    console.log(newPet.sleepy)
+    })
+
+
+
+function gameOver(){
+
+}
+function getPetName() {
+    name = prompt(`What will you call your pet?`)
+    //return name; 
+    const $namePlace = $('#actionButtons')
+    const $displayName = $(`<div>"My pet is named ${name}"</div>`)
+    $displayName.addClass = $('name')
+    $namePlace.append($displayName);
+    console.log(name)
+};
+    //incrementing functions 
+function howOld(){
+    if (initialTime >=0){
+        setInterval(function(){
+            initialAge++
+            $('#age').text(`Age: ${initialAge}`)
+        }, 60000)
+    }
+}
+
+    //hunger
+function howHungry(){
+        if (initialHunger <10) {
+            setInterval(function(){
+                initialHunger++
+                $('#hungry').text(`Hunger: ${initialHunger}`)
+            },15000);
+        }else{
+        gameOver();
+        return `Sad day! ${Pet.name} has died of hunger!`;
+        }
+}
+//sleep - tired 
+function howSleepy(){
+        if (initialSleepy <10) {
+            setInterval(function(){
+                initialSleepy++
+                $('#sleepy').text(`Sleepiness: ${initialSleepy}`)
+            },15000)
+        }else{
+        gameOver();
+        return `Sad day! ${Pet.name} has died of fatigue!`;
+        }   
+}
+//play - bored 
+function howBored() {
+        if (initialBoredom <10) {
+            setInterval(function(){
+                initialBoredom++
+                $('#bored').text(`Boredom: ${initialBoredom}`)
+            },15000);
+        }else{
+        gameOver();
+        return `Sad day! ${Pet.name} has died of boredom!`;
+        }
+}
+//buttons (feed, sleep, play) // <<<<<Look into a way to turn the button off for 10s after each click
+
+$('#hungerButton').click(function(){
+    if (initialHunger>0){
+    //nom animation
+        initialHunger--;
+        $('#hungry').text(`Hunger: ${initialHunger}`)
+    //happy animation
+        return `${this.pet} has been fed and had their hunger reduced by one!`;
+    }
+});
+
+$('#sleepButton').click(function(){
+    if (initialSleepy>0){
+    //darken screen for 3s
+        initialSleepy--;
+        $('#sleepy').text(`Sleepiness: ${initialSleepy}`)
+    //happy animation
+        return `${this.pet} has taken a nap and had their sleepiness reduced by one!`;
+    }
+});
+
+$('#playButton').click(function() {
+    if (initialBoredom >0){
+    //play animation
+        initialBoredom--;
+        $('#bored').text(`Boredom: ${initialBoredom}`)
+    //happy animation
+        return `${this.pet} had fun playing and had their boredom reduced by one!`;
+    }
+});
+ 

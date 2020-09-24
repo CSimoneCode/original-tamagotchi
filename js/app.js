@@ -43,10 +43,12 @@ class Pet {
     evolvePet() {
         //evolution animation? evolve every 5 minutes, age ++ every minute
         //Could I make and array of pet attributes and details and move to the next array item eith each evolution? Do research...
-        if (age ===5) {
+        if (initialAge===5) {
+            $("#petGraphic").replaceWith("<img src='http://pixelartmaker.com/art/899a587bd92292b.png'>")
             alert('morph1')
             //sub trapinch picture for the vibrava picture
-        }if (age ===10) {
+        }if (initialAge===10) {
+            $("#petGraphic").replaceWith("<img src='http://pixelartmaker.com/art/0134c80d93a76f2.png'>")
             alert('morph2')
             //sub vibrava picture for the flygon picture
         }
@@ -55,27 +57,21 @@ class Pet {
 }
 
 
-
-
-
-
 //})//time starts for age and attribute intervals
-    //hatch/wakeup animation
-    $('#startButton').click(function(){
-    gameTimer();
-    const newPet = new Pet(getPetName());
-    howBored()
-    howHungry()
-    howOld()
-    howSleepy()
-    newPet.evolvePet()
-    console.log(newPet.age)
-    console.log(newPet.bored)
-    console.log(newPet.hunger)
-    console.log(newPet.sleepy)
-    })
-
-
+//hatch/wakeup animation
+$('#startButton').click(function(){
+gameTimer();
+const newPet = new Pet(getPetName());
+howBored()
+howHungry()
+howOld()
+howSleepy()
+newPet.evolvePet()
+console.log(newPet.age)
+console.log(newPet.bored)
+console.log(newPet.hunger)
+console.log(newPet.sleepy)
+})
 
 function gameOver(){
 

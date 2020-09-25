@@ -46,23 +46,44 @@ class Pet {
         //evolution animation? evolve every 5 minutes, age ++ every minute
         //Could I make and array of pet attributes and details and move to the next array item eith each evolution? Do research...
         if (this.age === 5) {
-            const firstAnim = $('#petGraphic').css('animation: 5s infinite alternate fadein;');
+            
             $("#petGraphic").replaceWith('<img id="petGraphic" class="g2" src="http://pixelartmaker.com/art/899a587bd92292b.png">');
+            $("#petGraphic").css("animation", function(){
+                return "5s infinite alternate fadein;"            
+            });
             //sub trapinch picture for the vibrava picture
         }
         if (this.age === 10) {
-            const secondAnim = $('#petGraphic').css('.5s linear 1s infinite alternate slidein;');
+            const $petImg = "#petGraphic"
             $("#petGraphic").replaceWith('<img id="petGraphic" class="g3" src="http://pixelartmaker.com/art/0134c80d93a76f2.png">');
+            $("#petGraphic").css("animation", function(){
+                return "5s infinite alternate fadein;"            
+            });
             //sub vibrava picture for the flygon picture
         }
 
     }
+    //$( "div.example" ).css( "width", function( index ) {
+//   return index * 50;
+// });
     getPetName() {
         name = prompt(`What will you call your pet?`)
         //return name; 
-        const $namePlace = $('#actionButtons')
+        const $namePlace = $('h1')
         const $displayName = $(`<div>"My pet is named ${name}"</div>`)
         $displayName.addClass = $('name')
+        $displayName.css("font-size", function(){
+            return '28px';
+        });
+        $displayName.css("font-family", function(){
+            return 'Arial';
+        });
+        $displayName.css("padding-top", function(){
+            return '20px';
+        });
+        $displayName.css("opacity", function(){
+            return 0.7;
+        })
         $namePlace.append($displayName);
         console.log(name)
     };
@@ -123,7 +144,8 @@ class Pet {
 //})//time starts for age and attribute intervals
 //hatch/wakeup animation
 $('#startButton').click(function () {
-    $('header').remove()
+    $('#startButton').remove()
+    $('#gameStart').remove()
     const newPet = new Pet();
     newPet.getPetName()
     newPet.gameTimer()
@@ -136,41 +158,44 @@ $('#startButton').click(function () {
     console.log(newPet.bored)
     console.log(newPet.hunger)
     console.log(newPet.sleepy)
-})
-
-
-
-//buttons (feed, sleep, play) // <<<<<Look into a way to turn the button off for 10s after each click
+    //buttons (feed, sleep, play) // <<<<<Look into a way to turn the button off for 10s after each click
 
 $('#hungerButton').click(function () {
-    if (initialHunger > 0) {
+    if (newPet.hunger > 0) {
         //nom animation
-        initialHunger--;
-        $('#hungry').text(`Hunger: ${initialHunger}`)
+        newPet.hunger--;
+        $('#hungry').text(`Hunger: ${newPet.hunger}`)
         //happy animation
         return `${this.pet} has been fed and had their hunger reduced by one!`;
     }
 });
 
 $('#sleepButton').click(function () {
-    if (initialSleepy > 0) {
+    if (newPet.sleepy > 0) {
         //darken screen for 3s
-        initialSleepy--;
-        $('#sleepy').text(`Sleepiness: ${initialSleepy}`)
+        newPet.sleepy--;
+        $('#sleepy').text(`Sleepiness: ${newPet.sleepy}`)
         //happy animation
+        // new bubble = $('<img src=""')
+        // new statement = $('<span>`${this.pet} has taken a nap and had their sleepiness reduced by one!`</span>')
         return `${this.pet} has taken a nap and had their sleepiness reduced by one!`;
     }
 });
 
 $('#playButton').click(function () {
-    if (initialBoredom > 0) {
+    if (newPet.bored > 0) {
         //play animation
-        initialBoredom--;
-        $('#bored').text(`Boredom: ${initialBoredom}`)
+        newPet.bored--;
+        $('#bored').text(`Boredom: ${newPet.bored}`)
         //happy animation
         return `${this.pet} had fun playing and had their boredom reduced by one!`;
     }
 });
+})
+
+
+
+
 
 // function evolvePet() {
 //     //evolution animation? evolve every 5 minutes, age ++ every minute

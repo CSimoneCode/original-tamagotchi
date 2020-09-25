@@ -10,21 +10,12 @@
     <title>Digital Fantasy Pet</title>
 </head>
 <body>
-    <header>
+    <header id="entryPage">
         <h1>Raise your own digital pet!</h1> 
         <div id="gameStart">Ready to play? 
             <button id="startButton">Start!</button>
         </div>
-    </header>
-    <section id="descActions">
-        <p> <!-- description and explanation of how to play --></p>
-        <div id="actionButtons">
-            <button id="hungerButton">Feed Pet</button>
-            <button id="sleepButton">Light Off</button>
-            <button id="playButton">Play With Pet</button>
-        </div>
-        <!--Add another <div> for music if I decide to go that route after MVP is done-->
-    </section>
+    </header id="entryPage">
     <main class="container">
         <section id="statsDisplay">
         <ul id="statLevels">
@@ -38,11 +29,20 @@
         <section class="pet">
         <div class="frame">
             <div class="screen">
-                <img id="petGraphic" src="http://pixelartmaker.com/art/088a06fb5670ae9.png" alt="">
+                <img id="petGraphic" class="g1" src="http://pixelartmaker.com/art/088a06fb5670ae9.png" alt="">
             </div>
         </div>
         </section>
     </main>
+    <section id="descActions">
+        <p> <!-- description and explanation of how to play --></p>
+        <div id="actionButtons">
+            <button id="hungerButton">Feed Pet</button>
+            <button id="sleepButton">Light Off</button>
+            <button id="playButton">Play With Pet</button>
+        </div>
+        <!--Add another <div> for music if I decide to go that route after MVP is done-->
+    </section>
 </body>
 </html> 
   

@@ -18,6 +18,29 @@ let longDelay = 3000;
 let shortInc = 20000;
 let medInc = 40000
 let longInc = 60000;
+let $fullHeartGauge = 
+['<img class="hearts" src="./full-heart.png" alt="pixel art full red heart">',
+'<img class="hearts" src="./full-heart.png" alt="pixel art full red heart">',
+'<img class="hearts" src="./full-heart.png" alt="pixel art full red heart">',
+'<img class="hearts" src="./full-heart.png" alt="pixel art full red heart">',
+'<img class="hearts" src="./full-heart.png" alt="pixel art full red heart">',
+'<img class="hearts" src="./full-heart.png" alt="pixel art full red heart">',
+'<img class="hearts" src="./full-heart.png" alt="pixel art full red heart">',
+'<img class="hearts" src="./full-heart.png" alt="pixel art full red heart">',
+'<img class="hearts" src="./full-heart.png" alt="pixel art full red heart">',
+'<img class="hearts" src="./full-heart.png" alt="pixel art full red heart">',];
+let $emptyHeartGauge = 
+['<img class="hearts" src="./empty-heart.png" alt="pixel art empty heart">',
+'<img class="hearts" src="./empty-heart.png" alt="pixel art empty heart">',
+'<img class="hearts" src="./empty-heart.png" alt="pixel art empty heart">',
+'<img class="hearts" src="./empty-heart.png" alt="pixel art empty heart">',
+'<img class="hearts" src="./empty-heart.png" alt="pixel art empty heart">',
+'<img class="hearts" src="./empty-heart.png" alt="pixel art empty heart">',
+'<img class="hearts" src="./empty-heart.png" alt="pixel art empty heart">',
+'<img class="hearts" src="./empty-heart.png" alt="pixel art empty heart">',
+'<img class="hearts" src="./empty-heart.png" alt="pixel art empty heart">',
+'<img class="hearts" src="./empty-heart.png" alt="pixel art empty heart">'];
+
 
 
 //pet class   
@@ -46,8 +69,7 @@ class Pet {
         //evolution animation? evolve every 5 minutes, age ++ every minute
         //Could I make and array of pet attributes and details and move to the next array item eith each evolution? Do research...
         if (this.age === 5) {
-            
-            $("#petGraphic").replaceWith('<img id="petGraphic" class="g2" src="http://pixelartmaker.com/art/899a587bd92292b.png">');
+            $("#petGraphic").replaceWith('<img id="petGraphic" class="g2" src="http://pixelartmaker.com/art/899a587bd92292b.png" alt="pixellated vibrava pokemon">');
             $("#petGraphic").css("animation", function(){
                 return "5s infinite alternate fadein;"            
             });
@@ -55,7 +77,7 @@ class Pet {
         }
         if (this.age === 10) {
             const $petImg = "#petGraphic"
-            $("#petGraphic").replaceWith('<img id="petGraphic" class="g3" src="http://pixelartmaker.com/art/0134c80d93a76f2.png">');
+            $("#petGraphic").replaceWith('<img id="petGraphic" class="g3" src="http://pixelartmaker.com/art/0134c80d93a76f2.png" alt="pixellated flygon pokemon">');
             $("#petGraphic").css("animation", function(){
                 return "5s infinite alternate fadein;"            
             });
@@ -87,13 +109,16 @@ class Pet {
         $namePlace.append($displayName);
         console.log(name)
     };
+    // updateFullHeartGauge(){
+    //     $fullHeartGauge.shift()
+    //     $fullHeartGauge.push('<img class="hearts" src="./empty-heart.png" alt="pixel art empty heart">')
+    //}
     //incrementing functions 
     howOld() {
         if (initialTime === 0) {
             let self = this;
             setInterval(function () {
                 self.age++
-                self.evolvePet()
                 $('#age').text(`Age: ${self.age}`)
             }, longDelay)
         }
@@ -104,7 +129,8 @@ class Pet {
             let self = this;
             setInterval(function () {
                 self.hunger++
-                $('#hungry').text(`Hunger: ${self.hunger}`)
+                //$('#hungry').text(updateFullHeartGauge(${fullHeartGauge}));
+                $('#hungry').text(`Hunger: ${self.hunger}`);
             }, shortDelay);
         } else {
             gameOver();
@@ -146,6 +172,9 @@ class Pet {
 $('#startButton').click(function () {
     $('#startButton').remove()
     $('#gameStart').remove()
+    $("#petGraphic").replaceWith('<img id="petGraphic" class="g1" src="http://pixelartmaker.com/art/088a06fb5670ae9.png" alt="pixellated trapinch pokemon">');
+    $("#petGraphic").css("animation", function(){
+        return "5s infinite alternate fadein;"});
     const newPet = new Pet();
     newPet.getPetName()
     newPet.gameTimer()

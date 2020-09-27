@@ -17,7 +17,13 @@
         </div>
     </header id="entryPage">
     <section id="descActions">
-        <p> <!-- description and explanation of how to play --></p>
+        <!-- description and explanation of how to play -->
+        <p> - The game begins when you click the "Start" button. You'll be prompted to enter your pet's name!<br>
+            - At game start your egg hatches and the timer begins for your pet to age and for their attributes to begin counting down to 0.<br> 
+            - You can click "Play", "Lights Out", or "Feed" to get one of your hearts back, but how often you can click these buttons is limited.<br>
+            - When your pet turns 5, it will morph into the adolescent phase of it's life cycle. When your pet turns 10 is morphs into the adult phase of it's life cycle.<br>
+            - If all the hearts in any row count down to 0, your pet dies.
+            - If you keep your pet alive til it turns 15, you win! </p>
         <div id="actionButtons">
             <button id="hungerButton">Feed Pet</button>
             <button id="sleepButton">Light Off</button>
@@ -25,44 +31,47 @@
         </div>
         <!--Add another <div> for music if I decide to go that route after MVP is done-->
     </section>
-    <main class="container">
+    <main class="container1">
         <section id="statsDisplay">
         <ul id="statLevels">
-            <li id="hungry">Hunger: 
-                <img class="hearts" src="./empty-heart.png" alt="pixel art empty heart">
-                <img class="hearts" src="./empty-heart.png" alt="pixel art empty heart">
-                <img class="hearts" src="./empty-heart.png" alt="pixel art empty heart">
-                <img class="hearts" src="./empty-heart.png" alt="pixel art empty heart">
-                <img class="hearts" src="./empty-heart.png" alt="pixel art empty heart">
-                <img class="hearts" src="./empty-heart.png" alt="pixel art empty heart">
-                <img class="hearts" src="./empty-heart.png" alt="pixel art empty heart">
-                <img class="hearts" src="./empty-heart.png" alt="pixel art empty heart">
-                <img class="hearts" src="./empty-heart.png" alt="pixel art empty heart">
-                <img class="hearts" src="./empty-heart.png" alt="pixel art empty heart">
+            <li id="hungry">Hunger: </li>
+            <li id="allHearts" class="hungryHearts">
+                <!-- <img class="hearts1" src="./full-heart.png" alt="pixel art full heart">
+                <img class="hearts2" src="./full-heart.png" alt="pixel art full heart">
+                <img class="hearts3" src="./full-heart.png" alt="pixel art full heart">
+                <img class="hearts4" src="./full-heart.png" alt="pixel art full heart">
+                <img class="hearts5" src="./full-heart.png" alt="pixel art full heart">
+                <img class="hearts6" src="./full-heart.png" alt="pixel art full heart">
+                <img class="hearts7" src="./full-heart.png" alt="pixel art full heart">
+                <img class="hearts8" src="./full-heart.png" alt="pixel art full heart">
+                <img class="hearts9" src="./full-heart.png" alt="pixel art full heart">
+                <img class="hearts10" src="./full-heart.png" alt="pixel art full heart"> -->
             </li>
-            <li id="sleepy">Sleepiness: 
-                <img class="hearts" src="./empty-heart.png" alt="pixel art empty heart">
-                <img class="hearts" src="./empty-heart.png" alt="pixel art empty heart">
-                <img class="hearts" src="./empty-heart.png" alt="pixel art empty heart">
-                <img class="hearts" src="./empty-heart.png" alt="pixel art empty heart">
-                <img class="hearts" src="./empty-heart.png" alt="pixel art empty heart">
-                <img class="hearts" src="./empty-heart.png" alt="pixel art empty heart">
-                <img class="hearts" src="./empty-heart.png" alt="pixel art empty heart">
-                <img class="hearts" src="./empty-heart.png" alt="pixel art empty heart">
-                <img class="hearts" src="./empty-heart.png" alt="pixel art empty heart">
-                <img class="hearts" src="./empty-heart.png" alt="pixel art empty heart">
+            <li id="sleepy">Sleepiness: </li>
+            <li id="allHearts" class="sleepyHearts">
+                <!-- <img class="hearts" src="./full-heart.png" alt="pixel art full heart">
+                <img class="hearts" src="./full-heart.png" alt="pixel art full heart">
+                <img class="hearts" src="./full-heart.png" alt="pixel art full heart">
+                <img class="hearts" src="./full-heart.png" alt="pixel art full heart">
+                <img class="hearts" src="./full-heart.png" alt="pixel art full heart">
+                <img class="hearts" src="./full-heart.png" alt="pixel art full heart">
+                <img class="hearts" src="./full-heart.png" alt="pixel art full heart">
+                <img class="hearts" src="./full-heart.png" alt="pixel art full heart">
+                <img class="hearts" src="./full-heart.png" alt="pixel art full heart">
+                <img class="hearts" src="./full-heart.png" alt="pixel art full heart"> -->
             </li>
-            <li id="bored">Boredom: 
-                <img class="hearts" src="./empty-heart.png" alt="pixel art empty heart">
-                <img class="hearts" src="./empty-heart.png" alt="pixel art empty heart">
-                <img class="hearts" src="./empty-heart.png" alt="pixel art empty heart">
-                <img class="hearts" src="./empty-heart.png" alt="pixel art empty heart">
-                <img class="hearts" src="./empty-heart.png" alt="pixel art empty heart">
-                <img class="hearts" src="./empty-heart.png" alt="pixel art empty heart">
-                <img class="hearts" src="./empty-heart.png" alt="pixel art empty heart">
-                <img class="hearts" src="./empty-heart.png" alt="pixel art empty heart">
-                <img class="hearts" src="./empty-heart.png" alt="pixel art empty heart">
-                <img class="hearts" src="./empty-heart.png" alt="pixel art empty heart">
+            <li id="bored">Boredom: </li>
+            <li id="allHearts" class="boredHearts">
+                <!-- <img class="hearts" src="./full-heart.png" alt="pixel art full heart">
+                <img class="hearts" src="./full-heart.png" alt="pixel art full heart">
+                <img class="hearts" src="./full-heart.png" alt="pixel art full heart">
+                <img class="hearts" src="./full-heart.png" alt="pixel art full heart">
+                <img class="hearts" src="./full-heart.png" alt="pixel art full heart">
+                <img class="hearts" src="./full-heart.png" alt="pixel art full heart">
+                <img class="hearts" src="./full-heart.png" alt="pixel art full heart">
+                <img class="hearts" src="./full-heart.png" alt="pixel art full heart">
+                <img class="hearts" src="./full-heart.png" alt="pixel art full heart">
+                <img class="hearts" src="./full-heart.png" alt="pixel art full heart"> -->
             </li>
             <li id="age">Age: 0</li>
             <li id="timer">Time: 0s</li>

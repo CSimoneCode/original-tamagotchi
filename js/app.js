@@ -18,29 +18,25 @@ let longDelay = 3000;
 let shortInc = 20000;
 let medInc = 40000
 let longInc = 60000;
-let $fullHeartGauge = 
-['<img class="hearts" src="./full-heart.png" alt="pixel art full red heart">',
-'<img class="hearts" src="./full-heart.png" alt="pixel art full red heart">',
-'<img class="hearts" src="./full-heart.png" alt="pixel art full red heart">',
-'<img class="hearts" src="./full-heart.png" alt="pixel art full red heart">',
-'<img class="hearts" src="./full-heart.png" alt="pixel art full red heart">',
-'<img class="hearts" src="./full-heart.png" alt="pixel art full red heart">',
-'<img class="hearts" src="./full-heart.png" alt="pixel art full red heart">',
-'<img class="hearts" src="./full-heart.png" alt="pixel art full red heart">',
-'<img class="hearts" src="./full-heart.png" alt="pixel art full red heart">',
-'<img class="hearts" src="./full-heart.png" alt="pixel art full red heart">',];
-let $emptyHeartGauge = 
-['<img class="hearts" src="./empty-heart.png" alt="pixel art empty heart">',
-'<img class="hearts" src="./empty-heart.png" alt="pixel art empty heart">',
-'<img class="hearts" src="./empty-heart.png" alt="pixel art empty heart">',
-'<img class="hearts" src="./empty-heart.png" alt="pixel art empty heart">',
-'<img class="hearts" src="./empty-heart.png" alt="pixel art empty heart">',
-'<img class="hearts" src="./empty-heart.png" alt="pixel art empty heart">',
-'<img class="hearts" src="./empty-heart.png" alt="pixel art empty heart">',
-'<img class="hearts" src="./empty-heart.png" alt="pixel art empty heart">',
-'<img class="hearts" src="./empty-heart.png" alt="pixel art empty heart">',
-'<img class="hearts" src="./empty-heart.png" alt="pixel art empty heart">'];
-
+// let $fullHeartGauge = 
+// ['<img class="hearts" src="./full-heart.png" alt="pixel art full red heart">',
+// '<img class="hearts" src="./full-heart.png" alt="pixel art full red heart">',
+// '<img class="hearts" src="./full-heart.png" alt="pixel art full red heart">',
+// '<img class="hearts" src="./full-heart.png" alt="pixel art full red heart">',
+// '<img class="hearts" src="./full-heart.png" alt="pixel art full red heart">',
+// '<img class="hearts" src="./full-heart.png" alt="pixel art full red heart">',
+// '<img class="hearts" src="./full-heart.png" alt="pixel art full red heart">',
+// '<img class="hearts" src="./full-heart.png" alt="pixel art full red heart">',
+// '<img class="hearts" src="./full-heart.png" alt="pixel art full red heart">',
+// '<img class="hearts" src="./full-heart.png" alt="pixel art full red heart">',];
+// function removeHearts(){
+//     $fullHeartGauge.slice(0,1)
+//     $fullHeartGauge.push('<img class="hearts" src="./empty-heart.png" alt="pixel art empty heart">')
+//     return $fullHeartGauge
+// }
+// removeHearts()
+// let $justTags = $fullHeartGauge.join('')
+// $('.hungryHearts').replaceWith(`<li id="allHearts" class="hungryHearts">${$justTags}</li>`)
 
 
 //pet class   
@@ -61,26 +57,42 @@ class Pet {
     //methods    
     gameTimer() {
         this.timer = setInterval(function () {
-            initialTime++;
-            $('#timer').text(`timer: ${initialTime}s`)
+            setTimeout(function(){
+                initialTime++;
+                $('#timer').text(`timer: ${initialTime}s`)
+            }, 2500)
         }, 1000)
+    }
+    hatch(){
+        $('#petGraphic').css('animation-name', function(){
+            return "bounce"
+        })
+        $('#petGraphic').css('animation-duration', function(){
+            return "2s"
+        })
+        $('#petGraphic').css('animation-iteration-count', function(){
+            return "2"      
+        })
+        setTimeout( function(){
+            $(".g0").replaceWith('<img id="petGraphic" class="g1" src="http://pixelartmaker.com/art/088a06fb5670ae9.png" alt="pixellated trapinch pokemon">');
+        }, 1000)
+        
     }
     evolvePet() {
         //evolution animation? evolve every 5 minutes, age ++ every minute
         //Could I make and array of pet attributes and details and move to the next array item eith each evolution? Do research...
-        if (this.age === 5) {
-            $("#petGraphic").replaceWith('<img id="petGraphic" class="g2" src="http://pixelartmaker.com/art/899a587bd92292b.png" alt="pixellated vibrava pokemon">');
-            $("#petGraphic").css("animation", function(){
-                return "5s infinite alternate fadein;"            
-            });
+        if (this.age === 3) {
+            $('.g1').replaceWith('<img id="petGraphic" class="g2" src="http://pixelartmaker.com/art/899a587bd92292b.png" alt="pixellated vibrava pokemon">');
+            // $("#petGraphic").css("animation", function(){
+            //     return "5s infinite alternate fadein;"            
+            // });
             //sub trapinch picture for the vibrava picture
         }
-        if (this.age === 10) {
-            const $petImg = "#petGraphic"
-            $("#petGraphic").replaceWith('<img id="petGraphic" class="g3" src="http://pixelartmaker.com/art/0134c80d93a76f2.png" alt="pixellated flygon pokemon">');
-            $("#petGraphic").css("animation", function(){
-                return "5s infinite alternate fadein;"            
-            });
+        if (this.age === 6) {
+            $(".g2").replaceWith('<img id="petGraphic" class="g3" src="http://pixelartmaker.com/art/0134c80d93a76f2.png" alt="pixellated flygon pokemon">');
+            // $("#petGraphic").css("animation", function(){
+            //     return "5s infinite alternate fadein;"            
+            // });
             //sub vibrava picture for the flygon picture
         }
 
@@ -106,13 +118,14 @@ class Pet {
         $displayName.css("opacity", function(){
             return 0.7;
         })
+        $displayName.css("display", function(){
+            return "flex";
+        })
+        $displayName.css("justify-content", function(){
+            return "center"
+        })
         $namePlace.append($displayName);
-        console.log(name)
     };
-    // updateFullHeartGauge(){
-    //     $fullHeartGauge.shift()
-    //     $fullHeartGauge.push('<img class="hearts" src="./empty-heart.png" alt="pixel art empty heart">')
-    //}
     //incrementing functions 
     howOld() {
         if (initialTime === 0) {
@@ -122,15 +135,16 @@ class Pet {
                 $('#age').text(`Age: ${self.age}`)
             }, longDelay)
         }
+        this.age++
     }
     //hunger
     howHungry() {
+        //let $justTags = $fullHeartGauge.join('')
         if (this.hunger < 10) {
             let self = this;
             setInterval(function () {
                 self.hunger++
-                //$('#hungry').text(updateFullHeartGauge(${fullHeartGauge}));
-                $('#hungry').text(`Hunger: ${self.hunger}`);
+                $('#hungry').text(`Hunger: ${self.hunger}`)
             }, shortDelay);
         } else {
             gameOver();
@@ -172,9 +186,13 @@ class Pet {
 $('#startButton').click(function () {
     $('#startButton').remove()
     $('#gameStart').remove()
-    $("#petGraphic").replaceWith('<img id="petGraphic" class="g1" src="http://pixelartmaker.com/art/088a06fb5670ae9.png" alt="pixellated trapinch pokemon">');
-    $("#petGraphic").css("animation", function(){
-        return "5s infinite alternate fadein;"});
+    $('p').remove()
+    //$("#petGraphic").css("animation", function(){
+    //    return "5s infinite alternate fadein;"});
+    $('#actionButtons').css("display", function(){
+        return "flex"});
+    $('#statsDisplay').css("display", function(){
+        return "flex"});
     const newPet = new Pet();
     newPet.getPetName()
     newPet.gameTimer()
@@ -183,6 +201,7 @@ $('#startButton').click(function () {
     newPet.howOld()
     newPet.howSleepy()
     newPet.evolvePet()
+    newPet.hatch()
     console.log(newPet.age)
     console.log(newPet.bored)
     console.log(newPet.hunger)
@@ -193,21 +212,61 @@ $('#hungerButton').click(function () {
     if (newPet.hunger > 0) {
         //nom animation
         newPet.hunger--;
+        $('#petGraphic').css('animation-name', function(){
+            return "bounce"
+        })
+        $('#petGraphic').css('animation-duration', function(){
+            return "3s"
+        })
+        $('#petGraphic').css('animation-iteration-count', function(){
+            return "2"      
+        })
         $('#hungry').text(`Hunger: ${newPet.hunger}`)
         //happy animation
         return `${this.pet} has been fed and had their hunger reduced by one!`;
     }
+    console.log(newPet.age)
 });
 
 $('#sleepButton').click(function () {
     if (newPet.sleepy > 0) {
+        // $("#sleepButton").click(function() {
+        //     $('#sleepButton').attr('disabled', 'true');});   
         //darken screen for 3s
         newPet.sleepy--;
         $('#sleepy').text(`Sleepiness: ${newPet.sleepy}`)
-        //happy animation
-        // new bubble = $('<img src=""')
-        // new statement = $('<span>`${this.pet} has taken a nap and had their sleepiness reduced by one!`</span>')
-        return `${this.pet} has taken a nap and had their sleepiness reduced by one!`;
+        // let lightOn = true;
+        // function lights() {
+        //     if (lightOn === true){
+        //         $('.screen').css(`background-color`, function(){
+        //             return '#444444' 
+        //         })
+        //         return lightOn = false;
+        // }
+        //     if (lightOn === false) {
+        //         $('.screen').css(`background-color`, function(){
+        //             return '##5a6a7d' 
+        //         })
+        //         return lightOn = false;
+        //     }
+        // }
+        // // setTimeout(function(){
+        // //     $('#sleepButton').attr('disabled', 'true')
+        // // }, 3000)
+        // lights();
+        // //happy animation
+        // //toggle or time limit text bubble
+        // let $bubble = $('<img src="./text-bubble.png" alt="pixellated text bubble">')
+        // let $statement = $(`<span>${newPet} has taken a nap and had their sleepiness reduced by one!</span>`)
+        // $('#bubble').append($bubble)
+        // $bubble.append($statement)
+        // $('#bubble').css('animation', function(){
+        //     return "3s fadeinout"
+        // })
+        // $('#bubble').css('display', function(){
+        //     return "none";
+        // })
+        //return `${this.pet} has taken a nap and had their sleepiness reduced by one!`;
     }
 });
 
@@ -215,6 +274,15 @@ $('#playButton').click(function () {
     if (newPet.bored > 0) {
         //play animation
         newPet.bored--;
+        $('#petGraphic').css('animation-name', function(){
+            return "bounce"
+        })
+        $('#petGraphic').css('animation-duration', function(){
+            return "3s"
+        })
+        $('#petGraphic').css('animation-iteration-count', function(){
+            return "2"      
+        })
         $('#bored').text(`Boredom: ${newPet.bored}`)
         //happy animation
         return `${this.pet} had fun playing and had their boredom reduced by one!`;

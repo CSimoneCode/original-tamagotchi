@@ -1,78 +1,78 @@
 @font-face {
-        font-family: 'Back to 1982';
-        src: url('.././BACKTO1982.ttf');
-      }
+  font-family: "Back to 1982";
+  src: url(".././BACKTO1982.ttf");
+}
 
 body {
-    background-image: url("../Background.png");
-    /*display: inline-block;*/
-    background-size: stretch;
-    background-color: #2e394f;
-    background-repeat: repeat-x;
+  background-image: url("../Background.png");
+  /*display: inline-block;*/
+  background-size: stretch;
+  background-color: #2e394f;
+  background-repeat: repeat-x;
 }
 
 header {
-    /*top & center*/
-    font-family: 'Back to 1982', Fallback, sans-serif;
-    /*font-family: 'Arial', sans-serif;*/
-    font-size: 28px;
-    font-weight: 300;
-    color: #18402a;
-    width: 100%;
-    height: 80%;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    flex-wrap: wrap;
-    padding-bottom: auto;
+  /*top & center*/
+  font-family: "Back to 1982", Fallback, sans-serif;
+  /*font-family: 'Arial', sans-serif;*/
+  font-size: 28px;
+  font-weight: 300;
+  color: #18402a;
+  width: 100%;
+  height: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  padding-bottom: auto;
 }
 
 ul {
-    color: #ffffff;
-    list-style-type: none;
-    font-family: 'Back to 1982', Fallback, sans-serif;
-    font-size: 20px;
-    font-weight: 300;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
+  color: #ffffff;
+  list-style-type: none;
+  font-family: "Back to 1982", Fallback, sans-serif;
+  font-size: 20px;
+  font-weight: 300;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
 p {
-    padding: 5px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    font-family: 'Back to 1982', Fallback, sans-serif;
-    font-size: 16px;
-    font-weight: 200;
-    color: #7693b3;
+  padding: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  font-family: "Back to 1982", Fallback, sans-serif;
+  font-size: 16px;
+  font-weight: 200;
+  color: #7693b3;
 }
 
 #gameStart {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    flex-wrap: wrap;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
 }
 
 /* Style buttons, tomagotchi, animations, backgrounds, paragraphs, fonts, use flexbox?*/
 #descActions {
-    /*paragraph left, buttons underneath and inline*/
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
+  /*paragraph left, buttons underneath and inline*/
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
 
 #actionButtons {
-    display: none;
-    /*display: flex;*/
-    flex-direction: row;
-    justify-content: flex-end;
-    align-items: baseline;
+  display: none;
+  /*display: flex;*/
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: baseline;
 }
 
 /* button {
@@ -85,9 +85,9 @@ p {
 } */
 
 .container1 {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 
 /*#array {
@@ -98,107 +98,238 @@ p {
 }*/
 
 #statLevels {
-    /*inline across the top*/
-    padding: 5px;
-    display: flex;
-    flex-direction: column-reverse;
-    justify-content: flex-start;
-    align-items: center;
+  /*inline across the top*/
+  padding: 5px;
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: flex-start;
+  align-items: center;
 }
 
 #statsDisplay {
-    display: none;
-    padding: 0; 
-    margin: 0;
-    align-items: flex-start;
+  display: none;
+  padding: 0;
+  margin: 0;
+  align-items: flex-start;
 }
 
 ul li {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
 }
 
 #allHearts img {
-    width: 25px;
-    height: 25px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: row-reverse;
-    flex-wrap: wrap;
+  width: 25px;
+  height: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row-reverse;
+  flex-wrap: wrap;
 }
 
 .pet {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .frame {
-    background-color: #18402a;
-    height: 400px;
-    width: 300px;
-    border-radius: 47%;
-    border-color: teal;
-    border-width: 5px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  background-color: #18402a;
+  height: 400px;
+  width: 300px;
+  border-radius: 47%;
+  border-color: teal;
+  border-width: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .screen {
-    height: 250px;
-    width: 235px;
-    border-radius: 20%;
-    border-color: teal;
-    border-width: 5px;
-    background-color: #5a6a7d;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  height: 250px;
+  width: 235px;
+  border-radius: 20%;
+  border-color: teal;
+  border-width: 5px;
+  background-color: #5a6a7d;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #petGraphic {
-    height: 100%;
-    width: 90%;
-    opacity: 0.95;
-    display: flex;
-    justify-content: center;
-    align-items: center;  
+  height: 100%;
+  width: 90%;
+  opacity: 0.95;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #bubble {
-    height: 100%;
-    width: 100%;
-    display: flex;
-    flex-direction: row-reverse;
-    justify-content: center;
-    align-items: center;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: center;
+  align-items: center;
 }
 
+#explosion {
+  display: none;
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.bounce {
+  animation-duration: 3s;
+  animation-name: bounce;
+  animation-iteration-count: infinite;
+  animation-fill-mode: forwards;
+}
+
+.slidein {
+  animation-duration: 3s;
+  animation-name: slidein;
+  animation-timing-function: ease-in;
+  animation-iteration-count: 1;
+}
+.slideout {
+  animation-duration: 3s;
+  animation-name: slideout;
+  animation-timing-function: ease-out;
+  animation-iteration-count: 1;
+}
+
+.fadein {
+  animation: fadein 3s ease-in 1s 1;
+  z-index: 0;
+}
+
+.fadeout {
+  animation: fadeout 3s ease-out 1s 1;
+  z-index: 0;
+}
+
+.burst {
+  animation: burst 3s ease-in-out 2s 1;
+  animation: grow-shrink ease-in-out 2s 1;
+  z-index: 1;
+}
 
 /* #petGraphic {
     animation-duration: 5s;
     animation-name: bounce; 
     animation-iteration-count: 4;
 } */
+
 @keyframes bounce {
-    0%, 20%, 50%, 80%, 100% {transform: translateY(0);} 
-    40% {transform: translateY(-30px);} 
-    60% {transform: translateY(-15px);} 
-    } 
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-30px);
+  }
+  /* 40% {transform: translateX(30px)} */
+  60% {
+    transform: translateY(-15px);
+  }
+  /* 60% {transform: translateX(15px)} */
+}
 
 @keyframes slidein {
-    from {
-        margin-left: 100%;
-        width: 300%; 
-    }
-
-    to {
-        margin-left: 0%;
-        width: 100%;
-    }
+  from {
+    margin-left: 100%;
+    width: 300%;
+  }
+  to {
+    margin-left: 0%;
+    width: 100%;
+  }
 }
-  
+
+@keyframes slideout {
+  from {
+    margin-left: 0%;
+    width: 100%;
+  }
+  to {
+    margin-left: 100%;
+    width: 300%;
+  }
+}
+
+@keyframes fadein {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes fadeout {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes burst {
+  0% {
+    opacity: 0;
+  }
+  25% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+  75% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes grow-shrink {
+  0% {
+    height: 0%;
+    width: 0%;
+  }
+  25% {
+    height: 50%;
+    width: 50%;
+  }
+  50% {
+    height: 100%;
+    width: 100%;
+  }
+  75% {
+    height: 50%;
+    width: 50%;
+  }
+  100% {
+    height: 0%;
+    width: 0%;
+  }
+}
+   

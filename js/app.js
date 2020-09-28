@@ -32,12 +32,12 @@ let $petVar = $('#petGraphic')
 
 function nap() {
     $('.screen').addClass('dark');
-    $petVar.css('opacity', function(){
+    $('#petGraphic').css('opacity', function(){
         return 0.6;
     })
     setTimeout(function () {
         $('.screen').removeClass('dark');
-        $petVar.css('opacity', function(){
+        $('#petGraphic').css('opacity', function(){
             return 1;
         })
     }, 5000);
@@ -45,100 +45,118 @@ function nap() {
 
     //pet class   
     class Pet {
-        constructor(name = "your pet") {
+        constructor(name = "your pet", age, hunger, sleepiness, boredom) {
             //var for objects/attributes
             //name (user input)
             this.name = name;
             //age 
-            this.age = 0;
+            this.age = age;
             //hunger 
-            this.hunger = 0;
+            this.hunger = hunger;
             //tiredness 
-            this.sleepy = 0;
+            this.sleepy = sleepiness;
             //boredom
-            this.bored = 0;
+            this.bored = boredom;
         }
         //methods    
         hatch() {
             let $egg = $('.g0')
+            $('#petGraphic').css('animation', function(){
+                return ''
+            })
             $egg.css('animation', function(){
                 return 'fadeout ease-out 2s 1'
             })
+            $egg.css('display', function(){
+                return 'none'
+            })
             setTimeout(function () {
                 let $trapinch = $('g1')
+                $egg.css('animation', function(){
+                    return ''
+                })
                 $(".g0").replaceWith('<img id="petGraphic" class="pet g1" src="http://pixelartmaker.com/art/088a06fb5670ae9.png" alt="pixellated trapinch pokemon">');
+                $trapinch.css('display',function(){
+                    return 'flex'
+                });
                 $trapinch.css('animation',function(){
                     return 'fadein ease-in 2s 1'
                 });
-            }, 2000);
+            }, 2500);
         }
         evolvePet() {
-            //evolution animation? evolve every 5 minutes, age ++ every minute
-            //Could I make and array of pet attributes and details and move to the next array item eith each evolution? Do research...
-            // if (this.age === 4) {
-            //     // let $trapinch = $('g1')
-            //     // $trapinch.css('animation', function(){
-            //     //     return 'fadeout ease-out -2s 1'
-            //     // })
-            //     // setTimeout(function () {
-            //     //     $(".g0").replaceWith('<img id="petGraphic" class="pet g1" src="http://pixelartmaker.com/art/088a06fb5670ae9.png" alt="pixellated trapinch pokemon">');
-            //     //     $trapinch('animation',function(){
-            //     //         return 'fadein ease-in 2s 1'
-            //     //     });
-            //     // }, 2000);
-            // }
-            if (this.age === 5) {
+            if (this.age === 3) {
                 let $trapinch = $('g1')
+                $trapinch.css('animation',function(){
+                    return ''
+                });
                 $trapinch.css('animation', function(){
-                    return 'fadeout ease-out -2s 1'
+                    return 'fadeout ease-out 2s 1'
+                })
+                $trapinch.css('display', function(){
+                    return 'none'
                 })
                 setTimeout(function () {
                     let $vibrava = $('g2')
+                    $trapinch.css('animation',function(){
+                        return ''
+                    });
                     $('.g1').replaceWith('<img id="petGraphic" class="pet g2" src="http://pixelartmaker.com/art/899a587bd92292b.png" alt="pixellated vibrava pokemon">');
+                    $vibrava.css('display',function(){
+                        return 'flex'
+                    });
                     $vibrava.css('animation',function(){
                         return 'fadein ease-in 2s 1'
                     });
-                }, 2000);
-                //sub trapinch picture for the vibrava picture
+                }, 4000);
             }
-            // if (this.age === 8) {
-            //     let $img = $('.g2')
-            //     animation($img, 'fadeout')
-            //     // $('#morph').css('display', function(){
-            //     //     return "flex";
-            //     // })
-            //     // let y = $('#morph')
-            //     // animation(y, 'burst')
-            //     // setTimeout(function(){
-            //     //     $('#morph').css('display', function(){
-            //     //         return "none";
-            //     //     })
-            //     // }, 3000);
-            // }
-            if (this.age === 9) {
-                let $vibrava = $('g2')
+            if (this.age === 6) {
+                $vibrava.css('animation',function(){
+                    return ''
+                });
                 $vibrava.css('animation', function(){
                     return 'fadeout ease-out -2s 1'
                 })
+                $vibrava.css('display',function(){
+                    return 'none'
+                });
                 setTimeout(function () {
                     let $flygon = $('g3')
+                    $vibrava.css('animation',function(){
+                        return ''
+                    });
                     $(".g2").replaceWith('<img id="petGraphic" class="pet g3" src="http://pixelartmaker.com/art/0134c80d93a76f2.png" alt="pixellated flygon pokemon">');
+                    $flygon.css('display',function(){
+                        return 'flex'
+                    });
                     $flygon.css('animation',function(){
                         return 'fadein ease-in 2s 1'
                     });
-                }, 2000);
+                }, 4000);
                 //sub vibrava picture for the flygon picture
             }
         }
         gameTimer() {
-            let self = this;
+            let self = this; 
             this.timer = setInterval(function () {
                 setTimeout(function () {
                     initialTime++;
+                    self.howOld();
                     self.evolvePet();
+                    self.howBored();
+                    self.howHungry();
+                    self.howSleepy();
                     $('#timer').text(`timer: ${initialTime}s`)
                 }, 2500)
             }, 1000)
+        }
+        gameOver(){
+            let self = this;
+            if (self.sleepy >=10 || self.hungry >=10 || self.bored >=10 ) {
+                clearInterval(this.gameTimer())
+                alert('Game over!');
+                console.log('game over');
+            }
         }
         getPetName() {
             name = prompt(`What will you call your pet?`)
@@ -173,7 +191,7 @@ function nap() {
                 setInterval(function () {
                     self.age++
                     $('#age').text(`Age: ${self.age}`)
-                }, longDelay)
+                }, shortInc)
             }
             this.age++
         }
@@ -184,11 +202,11 @@ function nap() {
                 setInterval(function () {
                     self.hunger++
                     $('#hungry').text(`Hunger: ${self.hunger}`)
-                }, shortDelay);
+                }, shortInc);
             } else {
-                console.log('hunger over')
                 let phrase = `Sad day! ${self.name} has died of hunger!`;
-                gameOver(phrase);
+                self.gameOver();
+                console.log('hunger over')
             }
         }
         //sleep - tired 
@@ -199,11 +217,11 @@ function nap() {
                 setInterval(function () {
                     self.sleepy++
                     $('#sleepy').text(`Sleepiness: ${self.sleepy}`)
-                }, shortDelay);
+                }, shortInc);
             } else {
-                console.log('sleep over')
                 let phrase = `Sad day! ${self.name} has died of fatigue!`;
-                gameOver(phrase);
+                self.gameOver();
+                console.log('sleep over')
             }
         }
         //play - bored 
@@ -214,35 +232,27 @@ function nap() {
                 setInterval(function () {
                     self.bored++
                     $('#bored').text(`Boredom: ${self.bored}`)
-                }, shortDelay);
+                }, shortInc);
             } else {
                 //
                 console.log('bored over')
-                gameOver();
-            }
-        }
-        gameOver(phrase){
-            //let self = this;
-            if (newPet.sleepy >=10 || newPet.hungry >=10 || newPet.bored >=10 ) {
-                alert(phrase);
-                newPet.end(newPet.howBored())
-                console.log('game over');
+                self.gameOver();
             }
         }
     }
 
-    const newPet = new Pet();
+    //buttons (feed, sleep, play) // <<<<<Look into a way to turn the button off for 10s after each click
+    const newPet = new Pet(0,0,0,0);
     $('document').ready(function(){
         $('.g0').css('display', function(){
             return 'none';
         })
-        $petVar.addClass('slidein');
         setTimeout(function(){
             console.log('load animation');
+            $('#petGraphic').addClass('slidein');
             $('.g0').css('display', function(){
                 return 'flex'; 
             })
-            $petVar.removeClass('slidein')
         },2100);
     });
 
@@ -256,38 +266,36 @@ function nap() {
         $('#statsDisplay').css("display", function () {
             return "flex"
         });
+        $('#petGraphic').css({animation: ''});
         newPet.getPetName()
         newPet.gameTimer()
-        newPet.howBored()
-        newPet.howHungry()
         newPet.howOld()
-        newPet.howSleepy()
         newPet.hatch()
         console.log(newPet.age)
         console.log(newPet.bored)
         console.log(newPet.hunger)
         console.log(newPet.sleepy)
     });
-    //buttons (feed, sleep, play) // <<<<<Look into a way to turn the button off for 10s after each click
-    let $eat = $('#hungerbutton')
-    $eat.click(function () {
+
+    //let $eat = $('#hungerbutton')
+    $('#hungerbutton').click(function () {
         if (newPet.hunger > 0) {
             //nom animation
             newPet.hunger--;
-            $petVar.css('animation', function(){
-            return 'growshrink ease-in-out 2s 1'
-            });
-            $eat.attr('disabled', 'true')
+            $('#petGraphic').css({animation: ''});
+            console.log(`hunger - ${newPet.hunger}`)
+            $('#petGraphic').attr({animation: 'growshrink ease-in-out 2s 1'});
+            //$petVar.addClass('.growshrink')
+            $('#hungerbutton').attr('disabled', 'true')
             function delayedActions(){
                 setTimeout(function(){
-                    $petVar.css('animation', function(){
-                            return 'null';
-                        })
-                        console.log('first done')
-                    },3000)
+                    //$petVar.removeClass('.growshrink')
+                    $('#petGraphic').css({animation: ''})
+                        console.log('eat first done')
+                    },2100)
                 setTimeout(function(){
-                        $eat.removeAttr('disabled')
-                        console.log('second done')
+                    $('#hungerbutton').removeAttr('disabled')
+                        console.log('eat second done')
                     },10000)
                 };
             delayedActions();
@@ -308,8 +316,8 @@ function nap() {
             function delayedActions(){
                 setTimeout(function(){
                     $('button').removeAttr('disabled')
-                        console.log('second done')
-                    },10000)
+                        console.log('sleep done')
+                    },5000)
                 };
             delayedActions();
             $('#sleepy').text(`Sleepiness: ${newPet.sleepy}`)
@@ -336,19 +344,19 @@ function nap() {
         if (newPet.bored > 0) {
             //play animation
             newPet.bored--;
-            $petVar.css({animation: ''});
-            $petVar.css('animation:', function(){
-                return 'bounce ease-in-out 2s 1'
+            $('#petGraphic').css({animation: ''});
+            $('#petGraphic').css('animation:', function(){
+                return 'bounce 2s 1'
                 });
                 $play.attr('disabled', 'true')
                 function delayedActions(){
                     setTimeout(function(){
-                        $petVar.css({animation: ''});
-                            console.log('first done')
-                        },3000)
+                        $('#petGraphic').css({animation: ''});
+                            console.log('play first done')
+                        },2100)
                     setTimeout(function(){
                         $play.removeAttr('disabled')
-                            console.log('second done')
+                            console.log('play second done')
                         },10000)
                     };
                 delayedActions();
@@ -357,23 +365,4 @@ function nap() {
             return `${newPet.name} had fun playing and had their boredom reduced by one!`;
         }
     })
-
-
-
-
-
-    // function evolvePet() {
-    //     //evolution animation? evolve every 5 minutes, age ++ every minute
-    //     //Could I make and array of pet attributes and details and move to the next array item eith each evolution? Do research...
-    //     if (initialAge>=1) {
-    //         alert('morph1')
-    //         //kenny example: $('img[src="/images/test-sites/e-commerce/items/cart2.png"]')
-    //         $(".petGraphic").replaceWith('<img class="petGraphic" src="http://pixelartmaker.com/art/899a587bd92292b.png">')
-    //         //sub trapinch picture for the vibrava picture
-    //     }if (initialAge>=2) {
-    //         alert('morph2')
-    //         $(".petGraphic").replaceWith("<img src='http://pixelartmaker.com/art/0134c80d93a76f2.png'>")
-    //         //sub vibrava picture for the flygon picture
-    //     }
-    // } 
-  
+   

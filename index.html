@@ -17,7 +17,6 @@
         </div>
     </header id="entryPage">
     <section id="descActions">
-        <!-- description and explanation of how to play -->
         <p> - The game begins when you click the "Start" button. You'll be prompted to enter your pet's name!<br>
             - At game start your egg hatches and the timer begins for your pet to age and for their attributes to begin counting down to 0.<br> 
             - You can click "Play", "Lights Out", or "Feed" to get one of your hearts back, but how often you can click these buttons is limited.<br>
@@ -29,50 +28,13 @@
             <button id="sleepButton">Light Off</button>
             <button id="playButton">Play With Pet</button>
         </div>
-        <!--Add another <div> for music if I decide to go that route after MVP is done-->
     </section>
     <main class="container1">
         <section id="statsDisplay">
         <ul id="statLevels">
-            <li id="hungry">Hunger: </li>
-            <li id="allHearts" class="hungryHearts">
-                <!-- <img class="hearts1" src="./full-heart.png" alt="pixel art full heart">
-                <img class="hearts2" src="./full-heart.png" alt="pixel art full heart">
-                <img class="hearts3" src="./full-heart.png" alt="pixel art full heart">
-                <img class="hearts4" src="./full-heart.png" alt="pixel art full heart">
-                <img class="hearts5" src="./full-heart.png" alt="pixel art full heart">
-                <img class="hearts6" src="./full-heart.png" alt="pixel art full heart">
-                <img class="hearts7" src="./full-heart.png" alt="pixel art full heart">
-                <img class="hearts8" src="./full-heart.png" alt="pixel art full heart">
-                <img class="hearts9" src="./full-heart.png" alt="pixel art full heart">
-                <img class="hearts10" src="./full-heart.png" alt="pixel art full heart"> -->
-            </li>
-            <li id="sleepy">Sleepiness: </li>
-            <li id="allHearts" class="sleepyHearts">
-                <!-- <img class="hearts" src="./full-heart.png" alt="pixel art full heart">
-                <img class="hearts" src="./full-heart.png" alt="pixel art full heart">
-                <img class="hearts" src="./full-heart.png" alt="pixel art full heart">
-                <img class="hearts" src="./full-heart.png" alt="pixel art full heart">
-                <img class="hearts" src="./full-heart.png" alt="pixel art full heart">
-                <img class="hearts" src="./full-heart.png" alt="pixel art full heart">
-                <img class="hearts" src="./full-heart.png" alt="pixel art full heart">
-                <img class="hearts" src="./full-heart.png" alt="pixel art full heart">
-                <img class="hearts" src="./full-heart.png" alt="pixel art full heart">
-                <img class="hearts" src="./full-heart.png" alt="pixel art full heart"> -->
-            </li>
-            <li id="bored">Boredom: </li>
-            <li id="allHearts" class="boredHearts">
-                <!-- <img class="hearts" src="./full-heart.png" alt="pixel art full heart">
-                <img class="hearts" src="./full-heart.png" alt="pixel art full heart">
-                <img class="hearts" src="./full-heart.png" alt="pixel art full heart">
-                <img class="hearts" src="./full-heart.png" alt="pixel art full heart">
-                <img class="hearts" src="./full-heart.png" alt="pixel art full heart">
-                <img class="hearts" src="./full-heart.png" alt="pixel art full heart">
-                <img class="hearts" src="./full-heart.png" alt="pixel art full heart">
-                <img class="hearts" src="./full-heart.png" alt="pixel art full heart">
-                <img class="hearts" src="./full-heart.png" alt="pixel art full heart">
-                <img class="hearts" src="./full-heart.png" alt="pixel art full heart"> -->
-            </li>
+            <li id="hungry">Hunger: 0</li>
+            <li id="sleepy">Sleepiness: 0</li>
+            <li id="bored">Boredom: 0</li>
             <li id="age">Age: 0</li>
             <li id="timer">Time: 0s</li>
         </ul>
@@ -83,7 +45,7 @@
         <div class="frame">
             <div class="screen">
                 <img id="petGraphic" class="pet g0" src="./egg.png" alt="pixellated blue egg image">
-                <img id="morph" src="./full-heart.png" alt="pixellated red heart with a black outline">
+                <!-- <img id="morph" src="./full-heart.png" alt="pixellated red heart with a black outline"> -->
             </div>
         </div>
         </section>

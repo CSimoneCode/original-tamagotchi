@@ -162,7 +162,6 @@ ul li {
 #petGraphic {
   height: 100%;
   width: 90%;
-  opacity: 1;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -212,6 +211,10 @@ ul li {
   z-index: 0;
 }
 
+.slide {
+    animation: slidein alternate ease-in-out 3s 1;
+}
+
 .fadein {
   animation: fadein 2s ease-in 2s 1;
   z-index: 1;
@@ -228,7 +231,7 @@ ul li {
 }
 
 .growshrink {
-  animation: grow-shrink 2s 1;
+  animation: growshrink ease-in-out 2s 1;
 }
 
 /* #petGraphic {
@@ -306,11 +309,7 @@ ul li {
 
 @keyframes burst {
   0% {
-    display: none;
     opacity: 0;
-  }
-  1% {
-    display: flex;
   }
   25% {
     opacity: 0.5;
@@ -322,31 +321,25 @@ ul li {
     opacity: 0.5;
   }
   100% {
-    display: none;
     opacity: 0;
   }
 }
 
 @keyframes growshrink {
   0% {
-    display: none;
     transform: scale(1);
-  }
-  1% {
-    display: flex;
   }
   25% {
     transform: scale(1.2);
   }
   50% {
-    transform: scale(1.4);
+    transform: scale(1.3);
   }
   75% {
     transform: scale(1.2);
   }
   100% {
     transform: scale(1);
-    display: none;
   }
 }
   

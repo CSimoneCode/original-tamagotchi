@@ -89,17 +89,18 @@ function nap() {
                 setTimeout(function () {
                     initialTime++;
                     self.evolvePet();
-                    self.howBored();
-                    self.howHungry();
-                    self.howOld();
-                    self.howSleepy();
                     $('#timer').text(`timer: ${initialTime}s`)
                 }, 2500)
             }, 1000)
         }
         gameOver(){
-            alert('Game over!')
+            if ( this.bored >9 || this.sleepy >9 || this.hunger > 9){ 
+            newPet.end(howSleepy());
+            newPet.end(howBored());
+            newPet.end(howHungry());
             newPet.end(gameTimer());
+            alert('Game over!')
+            }
         }
         getPetName() {
             let self = this;
@@ -135,7 +136,7 @@ function nap() {
                 setInterval(function () {
                     self.age++
                     $('#age').text(`Age: ${self.age}`)
-                }, shortInc)
+                }, longDelay)
             }
         }
         howHungry() {
@@ -145,9 +146,7 @@ function nap() {
                     self.hunger++
                     $('#hungry').text(`Hunger: ${self.hunger}`)
                 }, longDelay);
-            } else {
-                self.gameOver();
-                console.log(`Sad day! ${Pet.name} has died of hunger!`);
+                self.gameOver();;
             }
         }
         howSleepy() {
@@ -157,9 +156,7 @@ function nap() {
                     self.sleepy++
                     $('#sleepy').text(`Sleepiness: ${self.sleepy}`)
                 }, longDelay)
-            } else {
                 self.gameOver();
-                console.log(`Sad day! ${Pet.name} has died of fatigue!`);
             }
         }
         howBored() {
@@ -169,9 +166,7 @@ function nap() {
                     self.bored++
                     $('#bored').text(`Boredom: ${self.bored}`)
                 }, longDelay);
-            } else {
                 self.gameOver();
-                console.log(`Sad day! ${Pet.name} has died of boredom!`);
             }
         }
     }
@@ -200,7 +195,11 @@ function nap() {
         });
         newPet.getPetName()
         newPet.gameTimer()
+        newPet.howOld()
         newPet.hatch()
+        newPet.howSleepy();
+        newPet.howBored();
+        newPet.howHungry();
         console.log(newPet.age)
         console.log(newPet.bored)
         console.log(newPet.hunger)
@@ -211,13 +210,20 @@ function nap() {
         if (newPet.hunger > 0) {
             newPet.hunger--;
             let $eat = $('#petGraphic');
-            animation($eat, 'growshrink')
+            $eat.css('animation', function(){
+                return 'none'
+            })
+            $eat.css('animation', function(){
+                return 'growshrink 2s 1'
+            })
             $('#hungerButton').attr('disabled', 'true')
             function delay(){
                 setTimeout(function(){
-                    $eat.removeClass('growshrink')
+                    $eat.css('animation', function(){
+                        return ''
+                    })
                     console.log('first eat done')
-                },3000)
+                },2500)
             setTimeout(function(){
                     $('#hungerButton').removeAttr('disabled')
                     console.log('second eat done')
@@ -233,12 +239,12 @@ function nap() {
         if (newPet.sleepy > 0) {
             newPet.sleepy--;
             nap();
-            $('#sleepButton').attr('disabled', 'true')
+            $('button').attr('disabled', 'true')
             function delay(){
                 setTimeout(function(){
-                    $('#sleepButton').removeAttr('disabled')
+                    $('button').removeAttr('disabled')
                     console.log('sleep done')
-                },10000)
+                },5000)
             }
             delay()
         }
@@ -254,13 +260,17 @@ function nap() {
             $play.css('animation', function(){
                 return 'none'
             })
-            animation($play, 'burst');
+            $play.css('animation', function(){
+                return 'bounce 2s 1'
+            })
             $('#playButton').attr('disabled', 'true')
             function delay(){
                 setTimeout(function(){
-                    $play.removeClass('burst')
+                    $play.css('animation', function(){
+                        return 'none'
+                    })
                     console.log('first play done')
-                },3000)
+                },2500)
                 setTimeout(function(){
                     $('#playButton').removeAttr('disabled')
                     console.log('second play done')

@@ -231,12 +231,6 @@ ul li {
   animation: grow-shrink 2s 1;
 }
 
-/* #petGraphic {
-    animation-duration: 5s;
-    animation-name: bounce; 
-    animation-iteration-count: 4;
-} */
-
 @keyframes bounce {
   0%,
   20%,
@@ -306,11 +300,7 @@ ul li {
 
 @keyframes burst {
   0% {
-    display: none;
     opacity: 0;
-  }
-  1% {
-    display: flex;
   }
   25% {
     opacity: 0.5;
@@ -322,18 +312,13 @@ ul li {
     opacity: 0.5;
   }
   100% {
-    display: none;
     opacity: 0;
   }
 }
 
 @keyframes growshrink {
   0% {
-    display: none;
     transform: scale(1);
-  }
-  1% {
-    display: flex;
   }
   25% {
     transform: scale(1.2);
@@ -346,7 +331,6 @@ ul li {
   }
   100% {
     transform: scale(1);
-    display: none;
   }
 }
   

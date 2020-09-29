@@ -4,16 +4,7 @@ let longDelay = 5000;
 let shortInc = 20000;
 let medInc = 40000;
 let longInc = 60000;
-
-function animation($petVar, $classVar) {
-    $petVar.removeClass($classVar);
-    let $newVar = $petVar.clone(true);
-    $newVar.addClass(`${$classVar}`);
-    $petVar.before($newVar);
-    $petVar.remove();
-    void $petVar.offsetWidth;
-    $petVar.addClass(`${$classVar}`);
-}
+let $petVar = $('#petGraphic')
 
 function nap() {
     $('.screen').addClass('dark');
@@ -84,22 +75,43 @@ function nap() {
             }
         }
         gameTimer() {
-            let self = this;
+            let self = this; 
             this.timer = setInterval(function () {
                 setTimeout(function () {
                     initialTime++;
+                    self.howOld();
                     self.evolvePet();
+                    self.howBored();
+                    self.howHungry();
+                    self.howSleepy();
                     $('#timer').text(`timer: ${initialTime}s`)
                 }, 2500)
             }, 1000)
         }
         gameOver(){
-            if ( this.bored >9 || this.sleepy >9 || this.hunger > 9){ 
-            newPet.end(howSleepy());
-            newPet.end(howBored());
-            newPet.end(howHungry());
-            newPet.end(gameTimer());
-            alert('Game over!')
+// <<<<<<< cleanSlate
+//             if ( this.bored >9 || this.sleepy >9 || this.hunger > 9){ 
+//             newPet.end(howSleepy());
+//             newPet.end(howBored());
+//             newPet.end(howHungry());
+//             newPet.end(gameTimer());
+//             alert('Game over!')
+//=======
+            let self = this;
+            if (self.sleepy >=10 || self.hungry >=10 || self.bored >=10 ) {
+                clearInterval(this.gameTimer())
+                clearInterval(this.howBored)
+                clearInterval(this.howHungry())
+                clearInterval(this.howSleepy())
+                clearInterval(this.howOld())
+                // .end(this.gameTimer())
+                // .end(this.howBored)
+                // .end(this.howHungry())
+                // .end(this.howSleepy())
+                // .end(this.howOld())
+                alert('Game over!');
+                console.log('game over');
+// >>>>>>> master
             }
         }
         getPetName() {
@@ -136,10 +148,11 @@ function nap() {
                 setInterval(function () {
                     self.age++
                     $('#age').text(`Age: ${self.age}`)
-                }, longDelay)
+                }, shortInc)
             }
         }
         howHungry() {
+
             if (this.hunger < 10) {
                 let self = this;
                 setInterval(function () {
@@ -150,8 +163,9 @@ function nap() {
             }
         }
         howSleepy() {
-            if (this.sleepy < 10) {
-                let self = this;
+            let self = this;
+            console.log(self.sleepy)
+            if (self.sleepy < 10) {
                 setInterval(function () {
                     self.sleepy++
                     $('#sleepy').text(`Sleepiness: ${self.sleepy}`)
@@ -160,8 +174,9 @@ function nap() {
             }
         }
         howBored() {
-            if (this.bored < 10) {
-                let self = this;
+            let self = this;
+            console.log(self.bored)
+            if (self.bored < 10) {
                 setInterval(function () {
                     self.bored++
                     $('#bored').text(`Boredom: ${self.bored}`)
@@ -171,13 +186,19 @@ function nap() {
         }
     }
 
-    const newPet = new Pet();
-
-    $('document').ready( function(){
-        $('.g0').css('animation', function(){
-            return 'slidein 2s 1'
+    const newPet = new Pet(0,0,0,0);
+    $('document').ready(function(){
+        $('.g0').css('display', function(){
+            return 'none';
         })
-    })
+        setTimeout(function(){
+            console.log('load animation');
+            $('#petGraphic').addClass('slidein');
+            $('.g0').css('display', function(){
+                return 'flex'; 
+            })
+        },2100);
+    });
 
 
     $('#startButton').click(function () {
@@ -193,6 +214,7 @@ function nap() {
         $('#statsDisplay').css("display", function () {
             return "flex"
         });
+        $('#petGraphic').css({animation: ''});
         newPet.getPetName()
         newPet.gameTimer()
         newPet.howOld()
@@ -206,7 +228,8 @@ function nap() {
         console.log(newPet.sleepy)
     });
 
-    $('#hungerButton').click(function () {
+
+    $('#hungerbutton').click(function () {
         if (newPet.hunger > 0) {
             newPet.hunger--;
             let $eat = $('#petGraphic');
@@ -234,8 +257,8 @@ function nap() {
             console.log(`${newPet.name} has been fed and had their hunger reduced by one!`);
         }
     });
-
-    $('#sleepButton').click(function () {
+    let $sleep = $('#sleepButton')
+    $sleep.click(function () {
         if (newPet.sleepy > 0) {
             newPet.sleepy--;
             nap();
@@ -251,11 +274,11 @@ function nap() {
         $('#sleepy').text(`Sleepiness: ${newPet.sleepy}`)
         console.log(`${newPet.name} has taken a nap and had their sleepiness reduced by one!`);
     });
-
-
+    let $play = $('#playButton');
     $('#playButton').click(function () {
         if (newPet.bored > 0) {
             newPet.bored--;
+
             let $play = $('#petGraphic');
             $play.css('animation', function(){
                 return 'none'

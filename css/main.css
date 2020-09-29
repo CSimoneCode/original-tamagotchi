@@ -191,7 +191,7 @@ ul li {
 .bounce {
   animation-duration: 3s;
   animation-name: bounce;
-  animation-iteration-count: infinite;
+  animation-iteration-count: 1;
   animation-fill-mode: forwards;
 }
 
@@ -232,12 +232,6 @@ ul li {
 .growshrink {
   animation: growshrink ease-in-out 2s 1;
 }
-
-/* #petGraphic {
-    animation-duration: 5s;
-    animation-name: bounce; 
-    animation-iteration-count: 4;
-} */
 
 @keyframes bounce {
   0%,
